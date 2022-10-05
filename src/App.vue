@@ -1,15 +1,16 @@
 <template>
     <div id="app">
-
+        <ViewTodos></ViewTodos>
     </div>
 </template>
 
 <script>
+import ViewTodos from './components/view-todos'
 
 export default {
     name: 'App',
     components: {
-
+        ViewTodos
     }
 }
 </script>
