@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-        <ViewTodos></ViewTodos>
+        <ViewTodo></ViewTodo>
     </div>
 </template>
 
 <script>
-import ViewTodos from './components/view-todos'
+import ViewTodo from './components/ViewTodo.vue'
 
 export default {
     name: 'App',
     components: {
-        ViewTodos
+        ViewTodo
     }
 }
 </script>
