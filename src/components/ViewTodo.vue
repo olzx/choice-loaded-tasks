@@ -1,20 +1,18 @@
 <template>
-    <div>
-        <ul v-for="todo in todos"
-            v-bind:key="todo.id"
-        >
-            [{{ todo.id }}] {{ todo.title }}
-        </ul>
-    </div>
+        <ViewTodoItems v-bind:todo-items="todos"></ViewTodoItems>
 </template>
 
 <script>
+import ViewTodoItems from './ViewTodoItems.vue'
 
 export default {
     data: function() {
         return {
             todos: []
         }
+    },
+    components: {
+        ViewTodoItems
     },
     methods: {
         capitalizeFirstLetter: function(string) {
