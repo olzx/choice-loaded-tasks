@@ -1,10 +1,10 @@
 <template>
     <div class="pagination">
         <span
-            class="pagination__page"
             v-for="page in amountPages"
             v-bind:key="page"
-            v-on:click="$emit('pagination:toggle', page)"
+            v-on:click="onClickPage(page)"
+            v-bind:class="toggleClass(page)"
         >
             {{ page }}
         </span>
@@ -17,6 +17,25 @@ export default {
         amountPages: {
             type: Number,
             require: true
+        }
+    },
+    data: function() {
+        return {
+            activePage: 1
+        }
+    },
+    methods: {
+        onClickPage: function(page) {
+            this.$emit('pagination:toggle', page)
+            this.activePage = page
+        },
+        toggleClass: function(page) {
+            return [
+                { 
+                    'pagination__active': page === this.activePage 
+                }, 
+                'pagination__page'
+            ]
         }
     }
 }
@@ -39,6 +58,9 @@ export default {
     margin-left: 10px;
 }
 .pagination__page:hover {
+    background-color: #bbb;
+}
+.pagination__active {
     background-color: #bbb;
 }
 </style>
