@@ -49,9 +49,14 @@ export default {
             this.activeTodoItems = this.getOffsetItems(page)
         }
     },
-    mounted: function() {
+    beforeMount: function() {
         this.activeTodoItems = this.getOffsetItems(1)
-        console.log('mounted')
+        console.log('beforeMount')
+        console.log(this.todoItems)
+    },
+    created: function() {
+        console.log('created')
+        console.log(this.todoItems)
     }
 }
 </script>
