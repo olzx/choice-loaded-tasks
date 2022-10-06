@@ -26,7 +26,12 @@ export default {
     },
     data: function() {
         return {
-
+            itemsOnPage: this.countItemsOnPage()
+        }
+    },
+    methods: {
+        countItemsOnPage: function() {
+            return this.todoItems.length / this.amountPages
         }
     }
 }
