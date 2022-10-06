@@ -45,11 +45,7 @@ export default {
 .pagination {
     text-align: center;
     display: flex;
-}
-@media (min-width: 1222px) {
-    .pagination {
-        justify-content: center;
-    }
+    justify-content: center;
 }
 .pagination__page {
     padding: 5px 20px;

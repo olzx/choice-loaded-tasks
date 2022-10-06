@@ -4,8 +4,12 @@
             v-bind:selected-todo="todoSelectedDataBase" 
             v-on:todo:remove="todoRemoved"
             v-on:editing-todo="changedTodo"
+            class="todo-blocks__block"
         ></SelectedTodo>
-        <ViewTodo v-on:todo:select="todoSelected"></ViewTodo>
+        <ViewTodo 
+            v-on:todo:select="todoSelected"
+            class="todo-blocks__block"
+        ></ViewTodo>
     </div>
 </template>
 
@@ -54,14 +58,20 @@ export default {
 }
 .todo-blocks {
     display: flex;
-    max-width: 1210px;
+    max-width: 1220px;
     justify-content: space-between;
     margin: 0 auto;
+}
+.todo-blocks__block {
+    max-width: 615px;
 }
 
 @media (max-width: 1222px) {
     .todo-blocks {
         flex-direction: column;
+    }
+    .todo-blocks__block {
+        margin: 0 auto;
     }
 }
 </style>
