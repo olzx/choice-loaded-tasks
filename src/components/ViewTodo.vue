@@ -2,6 +2,7 @@
     <ViewTodoControls
         v-bind:todo-items="todos" 
         v-bind:amount-pages="amountPages"
+        v-on:todo:select="$emit('todo:select', $event)"
     ></ViewTodoControls>
 </template>
 

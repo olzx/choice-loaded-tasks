@@ -4,6 +4,7 @@
             v-for="todo in todoItems"
             v-bind:key="todo.id"
             v-bind:class="toggleClass(todo)"
+            v-on:click="$emit('todo:select', todo)"
         >
             [{{ todo.id }}] {{ todo.title }}
         </li>
