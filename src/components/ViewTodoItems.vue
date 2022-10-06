@@ -1,5 +1,5 @@
 <template>
-    <transition-group class="todos" name="todos" tag="ul" mode="out-in">
+    <transition-group class="todos" name="todos" tag="ul">
         <li 
             v-for="todo in todoItems"
             v-bind:key="todo.id"
