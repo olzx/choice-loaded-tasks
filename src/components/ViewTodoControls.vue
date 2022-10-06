@@ -52,11 +52,6 @@ export default {
     beforeMount: function() {
         this.activeTodoItems = this.getOffsetItems(1)
         console.log('beforeMount')
-        console.log(this.todoItems)
-    },
-    created: function() {
-        console.log('created')
-        console.log(this.todoItems)
     }
 }
 </script>
