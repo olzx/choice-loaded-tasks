@@ -35,6 +35,7 @@ export default {
 }
 .todo {
     position: relative;
+    cursor: pointer;
 }
 .todo_completed_true::before {
     content: '';
