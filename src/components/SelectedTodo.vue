@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         todoSelected: function(todo) {
-            console.log(todo)
+            console.log('Selected: ', todo)
         }
     }
 }
