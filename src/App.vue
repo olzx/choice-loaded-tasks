@@ -1,16 +1,32 @@
 <template>
     <div id="app">
-        <ViewTodo></ViewTodo>
+        <SelectedTodo v-bind:selected-todo="todoSelectedDataBase"></SelectedTodo>
+        <ViewTodo v-on:todo:select="todoSelected"></ViewTodo>
     </div>
 </template>
 
 <script>
 import ViewTodo from './components/ViewTodo.vue'
+import SelectedTodo from './components/SelectedTodo.vue'
 
 export default {
     name: 'App',
     components: {
-        ViewTodo
+        ViewTodo,
+        SelectedTodo
+    },
+    data: function() {
+        return {
+            todoSelectedDataBase: []
+        }
+    },
+    methods: {
+        todoSelected: function(todo) {
+            const isFound = this.todoSelectedDataBase.indexOf(todo)
+            if (isFound === -1) {
+                this.todoSelectedDataBase.push(todo)
+            }
+        }
     }
 }
 </script>
