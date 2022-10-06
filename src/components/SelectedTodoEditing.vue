@@ -1,12 +1,20 @@
 <template>
-    <input 
-        class="editing__input" 
-        type="text" 
-        v-model="changedTitleTodo"
-        v-bind:size="getInputLength(activeTodo.title?.length)"
-        v-on:keyup.enter="submit"
-        placeholder="Select todo"
-    >
+    <section class="editing">
+        <input 
+            class="editing__input" 
+            type="text" 
+            v-model="changedTitleTodo"
+            v-bind:size="getInputLength(activeTodo.title?.length)"
+            v-on:keyup.enter="submit"
+            placeholder="Select todo"
+        >
+        <span 
+            v-if="activeSelectedTodoIsEmpty()"
+            class="editing__prompt"
+        >
+            Tub ENTER to save
+        </span>
+    </section>
 </template>
 
 <script>
@@ -38,13 +46,25 @@ export default {
                 todo: this.activeSelectedTodo,
                 newTitle: this.changedTitleTodo
             })
+        },
+        activeSelectedTodoIsEmpty: function() {
+            return Object.keys(this.activeSelectedTodo).length !== 0
         }
     }
 }
 </script>
 
 <style scoped>
+.editing {
+    position: relative;
+}
 .editing__input {
     text-align: center;
+}
+.editing__prompt {
+    position: absolute;
+    left: 5px;
+    bottom: -16px;
+    font-size: 12px;
 }
 </style>
