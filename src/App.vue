@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <SelectedTodo v-bind:selected-todo="todoSelectedDataBase"></SelectedTodo>
+        <SelectedTodo v-bind:selected-todo="todoSelectedDataBase" v-on:todo:remove="todoRemoved"></SelectedTodo>
         <ViewTodo v-on:todo:select="todoSelected"></ViewTodo>
     </div>
 </template>

@@ -1,7 +1,9 @@
 <template>
     <ViewTodoItems
         v-bind:todo-items="selectedTodo"
+        v-bind:is-close-button="true"
         v-on:todo:select="todoSelected"
+        v-on:todo:remove="$emit('todo:remove', $event)"
     ></ViewTodoItems>
 </template>
 
