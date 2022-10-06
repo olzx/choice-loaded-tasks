@@ -1,6 +1,10 @@
 <template>
     <div id="app" class="todo-blocks">
-        <SelectedTodo v-bind:selected-todo="todoSelectedDataBase" v-on:todo:remove="todoRemoved"></SelectedTodo>
+        <SelectedTodo 
+            v-bind:selected-todo="todoSelectedDataBase" 
+            v-on:todo:remove="todoRemoved"
+            v-on:editing-todo="changedTodo"
+        ></SelectedTodo>
         <ViewTodo v-on:todo:select="todoSelected"></ViewTodo>
     </div>
 </template>
@@ -31,6 +35,12 @@ export default {
             const isFound = this.todoSelectedDataBase.indexOf(todo)
             if (isFound !== -1) {
                 this.todoSelectedDataBase.splice(isFound, 1)
+            }
+        },
+        changedTodo: function(objectChange) {
+            const isFound = this.todoSelectedDataBase.indexOf(objectChange.todo)
+            if (isFound !== -1) {
+                this.todoSelectedDataBase[isFound].title = objectChange.newTitle
             }
         }
     }
