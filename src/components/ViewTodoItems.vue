@@ -1,5 +1,5 @@
 <template>
-    <ul class="todos">
+    <transition-group class="todos" name="todos" tag="ul" mode="out-in">
         <li 
             v-for="todo in todoItems"
             v-bind:key="todo.id"
@@ -7,7 +7,7 @@
         >
             [{{ todo.id }}] {{ todo.title }}
         </li>
-    </ul>
+    </transition-group>
 </template>
 
 <script>
@@ -55,5 +55,15 @@ export default {
     border-radius: 50%;
     left: -14px;
     top: 4px;
+}
+
+.todos-leave-active {
+    display: none;
+}
+.todos-enter {
+    opacity: 0;
+}
+.todos-enter-active {
+    transition: opacity .2s ease-in-out;
 }
 </style>
