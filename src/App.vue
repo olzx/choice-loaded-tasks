@@ -26,6 +26,12 @@ export default {
             if (isFound === -1) {
                 this.todoSelectedDataBase.push(todo)
             }
+        },
+        todoRemoved: function(todo) {
+            const isFound = this.todoSelectedDataBase.indexOf(todo)
+            if (isFound !== -1) {
+                this.todoSelectedDataBase.splice(isFound, 1)
+            }
         }
     }
 }
