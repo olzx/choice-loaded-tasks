@@ -1,13 +1,22 @@
 <template>
     <transition-group class="todos" name="todos" tag="ul">
-        <li 
+        <div 
             v-for="todo in todoItems"
             v-bind:key="todo.id"
-            v-bind:class="toggleClass(todo)"
-            v-on:click="$emit('todo:select', todo)"
+            class="todos__block"
         >
-            [{{ todo.id }}] {{ todo.title }}
-        </li>
+            <li
+                v-bind:class="toggleClass(todo)"
+                v-on:click="$emit('todo:select', todo)"
+            >
+                [{{ todo.id }}] {{ todo.title }}
+            </li>
+            <span 
+                v-if="isCloseButton"
+                class="todos__close-button"
+                v-on:click="$emit('todo:remove', todo)"
+            >x</span>
+        </div>
     </transition-group>
 </template>
 
@@ -17,6 +26,10 @@ export default {
         todoItems: {
             type: Array,
             require: true
+        },
+        isCloseButton: {
+            type: Boolean,
+            require: false
         }
     },
     methods: {
@@ -33,6 +46,10 @@ export default {
 <style scoped>
 .todos {
     list-style: none;
+}
+.todos__block {
+    display: flex;
+    align-items: center;
 }
 .todo {
     position: relative;
@@ -67,5 +84,18 @@ export default {
 }
 .todos-enter-active {
     transition: opacity .2s ease-in-out;
+}
+
+.todos__close-button {
+    background-color: #eee;
+    padding: 2px 5px;
+    border-radius: 5px;
+    transition: all .1s;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.todos__close-button:hover {
+    background-color: rgb(255, 104, 104);
 }
 </style>
