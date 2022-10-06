@@ -1,24 +1,29 @@
 <template>
-    <section>
-        <ViewTodoItems v-bind:todo-items="todos"></ViewTodoItems>
-        <ViewTodoPagination v-bind:amount-pages="amountPages"></ViewTodoPagination>
-    </section>
+    <ViewTodoControls
+        v-bind:todo-items="todos" 
+        v-bind:amount-pages="amountPages"
+    ></ViewTodoControls>
 </template>
 
 <script>
-import ViewTodoItems from './ViewTodoItems.vue'
-import ViewTodoPagination from './ViewTodoPagination.vue'
+import ViewTodoControls from './ViewTodoControls.vue'
 
 export default {
     data: function() {
         return {
-            todos: [],
+            todos: [
+                {
+                    id: 0,
+                    completed: true,
+                    title: 'New task',
+                    userId: 0
+                }
+            ],
             amountPages: 5
         }
     },
     components: {
-        ViewTodoItems,
-        ViewTodoPagination
+        ViewTodoControls
     },
     methods: {
         capitalizeFirstLetter: function(string) {
