@@ -1,6 +1,6 @@
 <template>
     <section>
-        <ViewTodoItems v-bind:todo-items="todoItems"></ViewTodoItems>
+        <ViewTodoItems v-bind:todo-items="activeTodoItems"></ViewTodoItems>
         <ViewTodoPagination v-bind:amount-pages="amountPages" v-on:pagination:toggle="togglePage"></ViewTodoPagination>
     </section>    
 </template>
@@ -26,16 +26,32 @@ export default {
     },
     data: function() {
         return {
-            itemsOnPage: this.countItemsOnPage()
+            itemsOnPage: 0,
+            activeTodoItems: []
         }
     },
     methods: {
         countItemsOnPage: function() {
             return this.todoItems.length / this.amountPages
         },
+        getOffsetItems: function(page) {
+            const items = this.todoItems
+            if (page === 1) {
+                return items.slice(0, this.itemsOnPage)
+            } else {
+                const pageOffsetBefore = (page-1)*this.itemsOnPage
+                const pageOffsetAfter = pageOffsetBefore + this.itemsOnPage
+
+                return items.slice(pageOffsetBefore, pageOffsetAfter)
+            }
+        },
         togglePage: function(page) {
-            console.log(page)
+            this.activeTodoItems = this.getOffsetItems(page)
         }
+    },
+    mounted: function() {
+        this.itemsOnPage = this.countItemsOnPage()
+        this.activeTodoItems = this.getOffsetItems(1)
     }
 }
 </script>
