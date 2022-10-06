@@ -8,6 +8,13 @@
             v-on:keyup.enter="submit"
             placeholder="Select todo"
         >
+        <span
+            v-if="activeSelectedTodoIsEmpty()"
+            v-on:click="$emit('completed-toggle', activeSelectedTodo)"
+            class="editing__toggle-completed"
+        >
+            Toggle completed
+        </span>
         <span 
             v-if="activeSelectedTodoIsEmpty()"
             class="editing__prompt"
@@ -66,5 +73,17 @@ export default {
     left: 5px;
     bottom: -16px;
     font-size: 12px;
+}
+.editing__toggle-completed {
+    padding: 3px 6px;
+    background-color: #eee;
+    cursor: pointer;
+    transition: all .1s;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.editing__toggle-completed:hover {
+    background-color: #bbb;
 }
 </style>

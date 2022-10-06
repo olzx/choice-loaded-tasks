@@ -4,6 +4,7 @@
             v-bind:selected-todo="todoSelectedDataBase" 
             v-on:todo:remove="todoRemoved"
             v-on:editing-todo="changedTodo"
+            v-on:completed-toggle="completedToggle"
             class="todo-blocks__block"
         ></SelectedTodo>
         <ViewTodo 
@@ -45,6 +46,13 @@ export default {
             const isFound = this.todoSelectedDataBase.indexOf(objectChange.todo)
             if (isFound !== -1) {
                 this.todoSelectedDataBase[isFound].title = objectChange.newTitle
+            }
+        },
+        completedToggle: function(todo) {
+            const isFound = this.todoSelectedDataBase.indexOf(todo)
+            if (isFound !== -1) {
+                const completed = this.todoSelectedDataBase[isFound].completed
+                this.todoSelectedDataBase[isFound].completed = !completed
             }
         }
     }

@@ -4,6 +4,7 @@
         <SelectedTodoEditing 
             v-bind:active-todo="todoChange" 
             v-on:editing-todo="$emit('editing-todo', $event)"
+            v-on:completed-toggle="$emit('completed-toggle', $event)"
         ></SelectedTodoEditing>
         <ViewTodoItems
             v-bind:todo-items="selectedTodo"
@@ -37,7 +38,6 @@ export default {
     methods: {
         todoSelected: function(todo) {
             this.todoChange = todo
-            console.log('Selected: ', todo.title)
         },
         onTodoRemove: function($event) {
             this.$emit('todo:remove', $event)
