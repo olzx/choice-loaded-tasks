@@ -36,6 +36,7 @@ export default {
             .then(response => response.data)
             .then(data => this.firstLetterArray(data))
             .then(modify => this.todos = modify)
+            .catch(err => console.log('[Error]: ', err))
     }
 }
 </script>
