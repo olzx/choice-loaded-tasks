@@ -1,6 +1,7 @@
 <template>
     <ViewTodoItems
         v-bind:todo-items="selectedTodo"
+        v-on:todo:select="todoSelected"
     ></ViewTodoItems>
 </template>
 
@@ -20,6 +21,11 @@ export default {
     data: function() {
         return {
             
+        }
+    },
+    methods: {
+        todoSelected: function(todo) {
+            console.log(todo)
         }
     }
 }
