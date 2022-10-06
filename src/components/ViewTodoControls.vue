@@ -1,6 +1,6 @@
 <template>
     <section>
-        <ViewTodoItems v-bind:todo-items="activeTodoItems"></ViewTodoItems>
+        <ViewTodoItems v-bind:todo-items="activeTodoItems" v-on:todo:select="$emit('todo:select', todo)"></ViewTodoItems>
         <ViewTodoPagination v-bind:amount-pages="amountPages" v-on:pagination:toggle="togglePage"></ViewTodoPagination>
     </section>    
 </template>
@@ -26,7 +26,7 @@ export default {
     },
     data: function() {
         return {
-            itemsOnPage: 0,
+            itemsOnPage: this.countItemsOnPage(),
             activeTodoItems: []
         }
     },
@@ -50,8 +50,8 @@ export default {
         }
     },
     mounted: function() {
-        this.itemsOnPage = this.countItemsOnPage()
         this.activeTodoItems = this.getOffsetItems(1)
+        console.log('mounted')
     }
 }
 </script>
