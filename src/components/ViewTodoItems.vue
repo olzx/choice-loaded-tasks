@@ -46,6 +46,7 @@ export default {
 <style scoped>
 .todos {
     list-style: none;
+    padding-left: 0px;
 }
 .todos__block {
     display: flex;
@@ -54,6 +55,7 @@ export default {
 .todo {
     position: relative;
     cursor: pointer;
+    padding-left: 15px;
 }
 .todo_completed_true::before {
     content: '';
@@ -62,7 +64,7 @@ export default {
     height: 10px;
     background-color: rgb(0, 128, 64);
     border-radius: 50%;
-    left: -14px;
+    left: 0px;
     top: 4px;
 }
 .todo_completed_false::before {
@@ -72,7 +74,7 @@ export default {
     height: 10px;
     background-color: rgb(201, 0, 0);
     border-radius: 50%;
-    left: -14px;
+    left: 0px;
     top: 4px;
 }
 

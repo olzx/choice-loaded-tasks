@@ -43,8 +43,13 @@ export default {
 
 <style scoped>
 .pagination {
-    width: 100%;
     text-align: center;
+    display: flex;
+}
+@media (min-width: 1222px) {
+    .pagination {
+        justify-content: center;
+    }
 }
 .pagination__page {
     padding: 5px 20px;
