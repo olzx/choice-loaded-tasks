@@ -1,5 +1,6 @@
 <template>
     <section>
+        <h3 class="selected__title">Selected: {{ selectedTodo.length }}</h3>
         <SelectedTodoEditing 
             v-bind:active-todo="todoChange" 
             v-on:editing-todo="$emit('editing-todo', $event)"
@@ -8,7 +9,7 @@
             v-bind:todo-items="selectedTodo"
             v-bind:is-close-button="true"
             v-on:todo:select="todoSelected"
-            v-on:todo:remove="$emit('todo:remove', $event)"
+            v-on:todo:remove="onTodoRemove"
         ></ViewTodoItems>
     </section>
 </template>
@@ -37,11 +38,21 @@ export default {
         todoSelected: function(todo) {
             this.todoChange = todo
             console.log('Selected: ', todo.title)
+        },
+        onTodoRemove: function($event) {
+            this.$emit('todo:remove', $event)
+
+            if ($event === this.todoChange) {
+                this.todoChange = {}
+            }
         }
     }
 }
 </script>
 
 <style scoped>
-
+.selected__title {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
 </style>
