@@ -1,7 +1,7 @@
 <template>
     <section>
         <ViewTodoItems v-bind:todo-items="todoItems"></ViewTodoItems>
-        <ViewTodoPagination v-bind:amount-pages="amountPages"></ViewTodoPagination>
+        <ViewTodoPagination v-bind:amount-pages="amountPages" v-on:pagination:toggle="togglePage"></ViewTodoPagination>
     </section>    
 </template>
 
@@ -32,6 +32,9 @@ export default {
     methods: {
         countItemsOnPage: function() {
             return this.todoItems.length / this.amountPages
+        },
+        togglePage: function(page) {
+            console.log(page)
         }
     }
 }

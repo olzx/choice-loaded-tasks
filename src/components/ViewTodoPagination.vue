@@ -4,6 +4,7 @@
             class="pagination__page"
             v-for="page in amountPages"
             v-bind:key="page"
+            v-on:click="$emit('pagination:toggle', page)"
         >
             {{ page }}
         </span>
