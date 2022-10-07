@@ -1,15 +1,17 @@
 <template>
-    <div id="app" class="todo-blocks">
+    <div id="app" v-bind:class="{'todo-blocks': !viewPreload}">
+        <PreloaderItem v-if="viewPreload"></PreloaderItem>
         <SelectedTodo 
             v-bind:selected-todo="todoSelectedDataBase" 
             v-on:todo:remove="todoRemoved"
             v-on:editing-todo="changedTodo"
             v-on:completed-toggle="completedToggle"
-            class="todo-blocks__block"
+            v-bind:class="[{'todo-blocks__block_disabled': viewPreload}, 'todo-blocks__block']"
         ></SelectedTodo>
         <ViewTodo 
             v-on:todo:select="todoSelected"
-            class="todo-blocks__block"
+            v-on:todo-loaded="todoLoaded"
+            v-bind:class="[{'todo-blocks__block_disabled': viewPreload}, 'todo-blocks__block']"
         ></ViewTodo>
     </div>
 </template>
@@ -17,16 +19,19 @@
 <script>
 import ViewTodo from './components/ViewTodo.vue'
 import SelectedTodo from './components/SelectedTodo.vue'
+import PreloaderItem from './components/PreloaderItem.vue'
 
 export default {
     name: 'App',
     components: {
         ViewTodo,
-        SelectedTodo
+        SelectedTodo,
+        PreloaderItem
     },
     data: function() {
         return {
-            todoSelectedDataBase: []
+            todoSelectedDataBase: [],
+            viewPreload: true
         }
     },
     methods: {
@@ -54,12 +59,22 @@ export default {
                 const completed = this.todoSelectedDataBase[isFound].completed
                 this.todoSelectedDataBase[isFound].completed = !completed
             }
+        },
+        viewPreloaderToggle() {
+            const vm = this
+            setTimeout(function() {vm.viewPreload = !vm.viewPreload}, 1000)
+        },
+        todoLoaded: function() {
+            this.viewPreloaderToggle()
         }
     }
 }
 </script>
 
 <style>
+body {
+    margin: 0;
+}
 #app {
     font-family: Helvetica, Arial, sans-serif;
     color: #2c3e50;
@@ -81,5 +96,9 @@ export default {
     .todo-blocks__block {
         margin: 0 auto;
     }
+}
+
+.todo-blocks__block_disabled {
+    display: none;
 }
 </style>
