@@ -1,24 +1,37 @@
-# hello-world
+# choice of tasks in Vue.js
 
-## Project setup
+## Description:
+> simple ~~dimple~~ project
+> written using Vue.js
+> doesn't make sense
+> just for exploring Vue 2
+
+## Functional:
+- select tasks from the list
+- edit selected task
+- change tasks completed flag
+
+## Installation:
+
+Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+Compiles and minifies for production
 ```
 npm run build
 ```
 
-### Lints and fixes files
+Lints and fixes files
 ```
 npm run lint
 ```
 
-### Customize configuration
+Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
