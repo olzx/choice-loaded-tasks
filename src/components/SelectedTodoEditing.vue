@@ -46,7 +46,7 @@ export default {
     },
     methods: {
         getInputLength: function(length) {
-            return length > 80 ? 80 : length
+            return length > 60 ? 60 : length
         },
         submit: function() {
             this.$emit('editing-todo', {
@@ -82,6 +82,7 @@ export default {
     border-radius: 4px;
     font-size: 12px;
     margin-left: 10px;
+    user-select: none;
 }
 .editing__toggle-completed:hover {
     background-color: #bbb;
