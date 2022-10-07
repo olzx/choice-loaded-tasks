@@ -6,12 +6,12 @@
             v-on:todo:remove="todoRemoved"
             v-on:editing-todo="changedTodo"
             v-on:completed-toggle="completedToggle"
-            v-bind:class="[{'todo-blocks__block_disabled': viewPreload}, 'todo-blocks__block']"
+            v-bind:class="preloaderContentDisable"
         ></SelectedTodo>
         <ViewTodo 
             v-on:todo:select="todoSelected"
             v-on:todo-loaded="todoLoaded"
-            v-bind:class="[{'todo-blocks__block_disabled': viewPreload}, 'todo-blocks__block']"
+            v-bind:class="preloaderContentDisable"
         ></ViewTodo>
     </div>
 </template>
@@ -66,6 +66,11 @@ export default {
         },
         todoLoaded: function() {
             this.viewPreloaderToggle()
+        }
+    },
+    computed: {
+        preloaderContentDisable: function() {
+            return [{'todo-blocks__block_disabled': this.viewPreload}, 'todo-blocks__block']
         }
     }
 }
