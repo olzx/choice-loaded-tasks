@@ -1,10 +1,10 @@
 <template>
-    <div class="box">
-        <div class="container">
-            <span class="circle"></span>
-            <span class="circle"></span>
-            <span class="circle"></span>
-            <span class="circle"></span>
+    <div class="preloader__box">
+        <div class="preloader__container">
+            <span class="preloader__circle"></span>
+            <span class="preloader__circle"></span>
+            <span class="preloader__circle"></span>
+            <span class="preloader__circle"></span>
         </div>
     </div>
 </template>
@@ -14,21 +14,21 @@
 </script>
 
 <style scoped>
-.box {
+.preloader__box {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.container {
+.preloader__container {
     height: 15px;
     width: 105px;
     display: flex;
     position: relative;
 }
 
-.container .circle {
+.preloader__container .preloader__circle {
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -37,14 +37,14 @@
     margin-right: 30px;
 }
 
-.container .circle:first-child {
+.preloader__container .preloader__circle:first-child {
     position: absolute;
     top: 0;
     left: 0;
     animation: grow 500ms linear 0ms infinite;
 }
 
-.container .circle:last-child {
+.preloader__container .preloader__circle:last-child {
     position: absolute;
     top: 0;
     right: 0;
