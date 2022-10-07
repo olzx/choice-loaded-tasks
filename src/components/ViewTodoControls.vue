@@ -1,7 +1,14 @@
 <template>
     <section>
-        <ViewTodoItems v-bind:todo-items="activeTodoItems" v-on:todo:select="$emit('todo:select', $event)"></ViewTodoItems>
-        <ViewTodoPagination v-bind:amount-pages="amountPages" v-on:pagination:toggle="togglePage"></ViewTodoPagination>
+        <ViewTodoItems 
+            v-bind:todo-items="activeTodoItems" 
+            v-on:todo:select="$emit('todo:select', $event)"
+        ></ViewTodoItems>
+        <ViewTodoPagination 
+            v-bind:amount-pages="amountPages" 
+            v-on:pagination:toggle="togglePage"
+        >
+        </ViewTodoPagination>
     </section>    
 </template>
 
