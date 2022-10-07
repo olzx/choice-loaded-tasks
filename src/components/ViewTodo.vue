@@ -41,7 +41,10 @@ export default {
         this.axios.get('https://jsonplaceholder.typicode.com/todos')
             .then(response => response.data)
             .then(data => this.firstLetterArray(data))
-            .then(modify => this.todos = modify)
+            .then(modify => {
+                this.todos = modify
+                this.$emit('todo-loaded')
+            })
             .catch(err => console.log('[Error]: ', err))
     }
 }
