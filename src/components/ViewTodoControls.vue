@@ -33,14 +33,11 @@ export default {
     },
     data: function() {
         return {
-            itemsOnPage: this.countItemsOnPage(),
+            itemsOnPage: 1,
             activeTodoItems: []
         }
     },
     methods: {
-        countItemsOnPage: function() {
-            return this.todoItems.length / this.amountPages
-        },
         getOffsetItems: function(page) {
             const items = this.todoItems
             if (page === 1) {
@@ -56,9 +53,11 @@ export default {
             this.activeTodoItems = this.getOffsetItems(page)
         }
     },
-    beforeMount: function() {
-        this.activeTodoItems = this.getOffsetItems(1)
-        console.log('beforeMount')
+    watch: {
+        todoItems: function(newItems) {
+            this.itemsOnPage = newItems.length / this.amountPages
+            this.activeTodoItems = this.getOffsetItems(1)
+        }
     }
 }
 </script>
