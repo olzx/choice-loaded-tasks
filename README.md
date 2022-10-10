@@ -11,7 +11,7 @@
 - edit selected task
 - change tasks completed flag
 
-<h2 align="left"><a  href="https://olzx.github.io/choice-loaded-tasks/demo/demo">Demo</a></h2>
+<h2 align="left"><a  href="https://olzx.github.io/choice-loaded-tasks/demo">Demo</a></h2>
 
 ## Installation:
 
